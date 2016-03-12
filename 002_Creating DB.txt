@@ -1,6 +1,6 @@
-1. Ñîçäàåì â PMA áàçó äàííûõ databasename
+ï»¿1. Ð¡Ð¾Ð·Ð´Ð°ÐµÐ¼ Ð² PMA Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ… databasename
 
-2. Ñîçäàåì òàáëèöû â ñëåäóþùåì ïîðÿäêå:
+2. Ð¡Ð¾Ð·Ð´Ð°ÐµÐ¼ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ‹ Ð² ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÐµÐ¼ Ð¿Ð¾Ñ€ÑÐ´ÐºÐµ:
 	CREATE TABLE user (
 		id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 		first_name VARCHAR(255) NOT NULL,
@@ -92,7 +92,7 @@
 			ON DELETE CASCADE ON UPDATE CASCADE
 	);
 
-3. Îòêðûâàåì ôàéë config/db.php è íàñòðàèâàåì áàçó
+3. ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ„Ð°Ð¹Ð» config/db.php Ð¸ Ð½Ð°ÑÑ‚Ñ€Ð°Ð¸Ð²Ð°ÐµÐ¼ Ð±Ð°Ð·Ñƒ
 	return [
 		'class' => 'yii\db\Connection',
 		'dsn' => 'mysql:host=localhost;dbname= databasename ',
