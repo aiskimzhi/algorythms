@@ -1,17 +1,17 @@
-1. Скачиваем Composer https://getcomposer.org/ 
-Если у вас уже установлен Composer, обновите его при помощи composer self-update. 
+п»ї1. РЎРєР°С‡РёРІР°РµРј Composer https://getcomposer.org/ 
+Р•СЃР»Рё Сѓ РІР°СЃ СѓР¶Рµ СѓСЃС‚Р°РЅРѕРІР»РµРЅ Composer, РѕР±РЅРѕРІРёС‚Рµ РµРіРѕ РїСЂРё РїРѕРјРѕС‰Рё composer self-update. 
 
-2. После установки Composer устанавливать Yii можно запустив следующую команду в папке доступной через веб:
+2. РџРѕСЃР»Рµ СѓСЃС‚Р°РЅРѕРІРєРё Composer СѓСЃС‚Р°РЅР°РІР»РёРІР°С‚СЊ Yii РјРѕР¶РЅРѕ Р·Р°РїСѓСЃС‚РёРІ СЃР»РµРґСѓСЋС‰СѓСЋ РєРѕРјР°РЅРґСѓ РІ РїР°РїРєРµ РґРѕСЃС‚СѓРїРЅРѕР№ С‡РµСЂРµР· РІРµР±:
 	composer global require "fxp/composer-asset-plugin:~1.1.1"
 	composer create-project --prefer-dist yiisoft/yii2-app-basic dir.name 2.0.6 
 
-3. Добавляем приложение в фаил C:\Windows\System32\drivers\etc\hosts
+3. Р”РѕР±Р°РІР»СЏРµРј РїСЂРёР»РѕР¶РµРЅРёРµ РІ С„Р°РёР» C:\Windows\System32\drivers\etc\hosts
 	127.0.0.1	localhost
 	::1			localhost
 	127.0.0.1	dir.name
 	127.0.0.1	www.dir.name 
 
-4. Добавляем приложение в фаил D:\ProgramFiles\xampp\apache\conf\extra\httpd-vhosts
+4. Р”РѕР±Р°РІР»СЏРµРј РїСЂРёР»РѕР¶РµРЅРёРµ РІ С„Р°РёР» D:\ProgramFiles\xampp\apache\conf\extra\httpd-vhosts
 	<VirtualHost *:80>
 		ServerAdmin asi@localhost
 		DocumentRoot "D:/server/dir.name/basic/web"
@@ -24,7 +24,7 @@
 		</Directory>
 	</VirtualHost> 
 
-5. В папку dir.name/web кладем фаил .htaccess
+5. Р’ РїР°РїРєСѓ dir.name/web РєР»Р°РґРµРј С„Р°РёР» .htaccess
 	RewriteEngine on
 
 	# If a directory or a file exists, use the request directly
@@ -34,14 +34,14 @@
 	# Otherwise forward the request to index.php
 	RewriteRule . index.php 
 
-6. Открываем фаил config/web.php и настраиваем урлы
+6. РћС‚РєСЂС‹РІР°РµРј С„Р°РёР» config/web.php Рё РЅР°СЃС‚СЂР°РёРІР°РµРј СѓСЂР»С‹
 	$config = [
-		//настройки по умолчанию
+		//РЅР°СЃС‚СЂРѕР№РєРё РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 		'user' => [],
 		'urlManager' => [
 			'enablePrettyUrl' => true, 
 			'showScriptName' => false,
 			'enableStrictParsing' => false,
 		],
-		//дальше настройки по умолчанию 
+		//РґР°Р»СЊС€Рµ РЅР°СЃС‚СЂРѕР№РєРё РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ 
 	]; 
