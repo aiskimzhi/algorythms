@@ -1,4 +1,5 @@
-﻿1. Скачиваем Composer https://getcomposer.org/ 
+﻿# 1. Скачиваем Composer https://getcomposer.org/ 
+
 Если у вас уже установлен Composer, обновите его при помощи composer self-update. 
 
 2. После установки Composer устанавливать Yii можно запустив следующую команду в папке доступной через веб:
