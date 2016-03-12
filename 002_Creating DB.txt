@@ -1,0 +1,102 @@
+1. Создаем в PMA базу данных databasename
+
+2. Создаем таблицы в следующем порядке:
+	CREATE TABLE user (
+		id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		first_name VARCHAR(255) NOT NULL,
+		last_name VARCHAR(255) NOT NULL,
+		email VARCHAR(255) NOT NULL,
+		password VARCHAR(255) NOT NULL,
+		phone VARCHAR(255) NULL,
+		skype VARCHAR(255) NULL,
+		password_reset_token VARCHAR(255) NULL
+	);
+
+	CREATE TABLE currency (
+		date INT(11) NOT NULL,
+		usd DECIMAL(10, 2) NOT NULL,
+		eur DECIMAL(10, 2) NOT NULL,
+		rur DECIMAL(10, 2) NOT NULL,
+		uan DECIMAL(10, 2) NOT NULL
+	);
+	INSERT INTO currency  (date, usd, eur, rur, uan) VALUES (0, 1, 1.31999, 0.02769, 0.07321); 
+
+	CREATE TABLE region (
+		id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		name VARCHAR(255) NOT NULL
+	);
+
+	CREATE TABLE city (
+		id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		region_id INT(11) NOT NULL,
+		name VARCHAR(255) NOT NULL,
+		FOREIGN KEY (region_id) REFERENCES region (id) ON DELETE CASCADE ON UPDATE CASCADE
+	);
+
+	CREATE TABLE category (
+		id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		name VARCHAR(255) NOT NULL
+	);
+
+	CREATE TABLE subcategory (
+		id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		category_id INT(11) NOT NULL,
+		name VARCHAR(255) NOT NULL,
+		FOREIGN KEY (category_id) REFERENCES category (id) ON DELETE CASCADE ON UPDATE CASCADE
+	);
+
+	CREATE TABLE advert (
+		id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		user_id INT(11) NOT NULL,
+		region_id INT(11) NOT NULL,
+		city_id INT(11) NOT NULL,
+		category_id INT(11) NOT NULL,
+		subcategory_id INT(11) NOT NULL,
+		title VARCHAR(255) NOT NULL,
+		text TEXT NOT NULL,
+		price DECIMAL(10,2) NOT NULL,
+		currency VARCHAR(3) NOT NULL,
+		u_price DECIMAL(10,2) NOT NULL,
+		created_at INT(11) NOT NULL,
+		updated_at INT(11) NOT NULL,
+		views INT(11) NULL,
+		avatar VARCHAR(255),
+		FOREIGN KEY (user_id) REFERENCES user (id) 
+			ON DELETE CASCADE ON UPDATE CASCADE,
+		FOREIGN KEY (region_id) REFERENCES region (id) 
+			ON DELETE CASCADE ON UPDATE CASCADE,
+		FOREIGN KEY (city_id) REFERENCES city (id) 
+			ON DELETE CASCADE ON UPDATE CASCADE,
+		FOREIGN KEY (category_id) REFERENCES category (id) 
+			ON DELETE CASCADE ON UPDATE CASCADE,
+		FOREIGN KEY (subcategory _id) REFERENCES subcategory (id) 
+			ON DELETE CASCADE ON UPDATE CASCADE
+	);
+
+	CREATE TABLE bookmark (
+		id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		user_id INT(11) NOT NULL,
+		advert_id INT(11) NOT NULL,
+		FOREIGN KEY (user_id) REFERENCES user (id) 
+			ON DELETE CASCADE ON UPDATE CASCADE,
+		FOREIGN KEY (advert_id) REFERENCES advert (id) 
+			ON DELETE CASCADE ON UPDATE CASCADE
+	);
+
+	CREATE TABLE views (
+		user_id INT(11) NOT NULL,
+		advert_id INT(11) NOT NULL,
+		FOREIGN KEY (user_id) REFERENCES user (id) 
+			ON DELETE CASCADE ON UPDATE CASCADE,
+		FOREIGN KEY (advert_id) REFERENCES advert (id) 
+			ON DELETE CASCADE ON UPDATE CASCADE
+	);
+
+3. Открываем файл config/db.php и настраиваем базу
+	return [
+		'class' => 'yii\db\Connection',
+		'dsn' => 'mysql:host=localhost;dbname= databasename ',
+		'username' => 'root',
+		'password' => '',
+		'charset' => 'utf8',
+	];
